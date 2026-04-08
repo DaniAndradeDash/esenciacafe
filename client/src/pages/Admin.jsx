@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Coffee, BookOpen, QrCode, ArrowLeft, Plus, Pencil, Trash2, Loader } from 'lucide-react';
+import { Coffee, BookOpen, QrCode, ArrowLeft, Plus, Pencil, Trash2, Loader, Search, X } from 'lucide-react';
 import api from '../context/api';
 import './Admin.css';
 import './AdminProducts.css';
@@ -20,25 +20,65 @@ function Admin() {
     is_available: true,
   });
   const [saving, setSaving] = useState(false);
+  const [filters, setFilters] = useState({
+    search: '',
+    category: '',
+    minPrice: '',
+    maxPrice: '',
+    status: '',
+  });
 
   useEffect(() => {
-    loadData();
+    loadCategories();
   }, []);
 
-  const loadData = async () => {
+  useEffect(() => {
+    loadProducts();
+  }, [filters]);
+
+  const loadCategories = async () => {
+    try {
+      const catsData = await api.categories.getAll();
+      setCategories(catsData);
+    } catch (error) {
+      console.error('Error cargando categorías:', error);
+    }
+  };
+
+  const loadProducts = async () => {
     try {
       setLoading(true);
-      const [catsData, prodsData] = await Promise.all([
-        api.categories.getAll(),
-        api.products.getAll(),
-      ]);
-      setCategories(catsData);
+      const filterParams = {};
+      if (filters.search) filterParams.search = filters.search;
+      if (filters.category) filterParams.category = filters.category;
+      if (filters.minPrice) filterParams.minPrice = filters.minPrice;
+      if (filters.maxPrice) filterParams.maxPrice = filters.maxPrice;
+      if (filters.status) filterParams.status = filters.status;
+      
+      const prodsData = await api.products.getAll(filterParams);
       setProducts(prodsData);
     } catch (error) {
-      console.error('Error cargando datos:', error);
+      console.error('Error cargando productos:', error);
     }
     setLoading(false);
   };
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilters((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const clearFilters = () => {
+    setFilters({
+      search: '',
+      category: '',
+      minPrice: '',
+      maxPrice: '',
+      status: '',
+    });
+  };
+
+  const hasActiveFilters = filters.search || filters.category || filters.minPrice || filters.maxPrice || filters.status;
 
   const handleOpenModal = (product = null) => {
     if (product) {
@@ -89,7 +129,7 @@ function Admin() {
       } else {
         await api.products.create(data);
       }
-      await loadData();
+      await loadProducts();
       handleCloseModal();
     } catch (error) {
       console.error('Error guardando:', error);
@@ -101,7 +141,7 @@ function Admin() {
     if (window.confirm('¿Estás seguro de eliminar este producto?')) {
       try {
         await api.products.delete(id);
-        await loadData();
+        await loadProducts();
       } catch (error) {
         console.error('Error eliminando:', error);
       }
@@ -153,6 +193,77 @@ function Admin() {
               Nuevo Producto
             </button>
           </div>
+        </div>
+
+        <div className="filters-bar">
+          <div className="filter-group search-group">
+            <Search size={18} className="filter-icon" />
+            <input
+              type="text"
+              name="search"
+              placeholder="Buscar producto..."
+              value={filters.search}
+              onChange={handleFilterChange}
+              className="filter-input"
+            />
+          </div>
+
+          <div className="filter-group">
+            <select
+              name="category"
+              value={filters.category}
+              onChange={handleFilterChange}
+              className="filter-select"
+            >
+              <option value="">Todas las categorías</option>
+              {categories.map((cat) => (
+                <option key={cat.id} value={cat.id}>{cat.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="filter-group price-filter">
+            <input
+              type="number"
+              name="minPrice"
+              placeholder="Precio min"
+              value={filters.minPrice}
+              onChange={handleFilterChange}
+              className="filter-input price-input"
+              min="0"
+              step="0.01"
+            />
+            <span className="price-separator">-</span>
+            <input
+              type="number"
+              name="maxPrice"
+              placeholder="Precio max"
+              value={filters.maxPrice}
+              onChange={handleFilterChange}
+              className="filter-input price-input"
+              min="0"
+              step="0.01"
+            />
+          </div>
+
+          <div className="filter-group">
+            <select
+              name="status"
+              value={filters.status}
+              onChange={handleFilterChange}
+              className="filter-select"
+            >
+              <option value="">Todos los estados</option>
+              <option value="true">Disponible</option>
+              <option value="false">No disponible</option>
+            </select>
+          </div>
+
+          {hasActiveFilters && (
+            <button className="btn-clear-filters" onClick={clearFilters} title="Limpiar filtros">
+              <X size={18} />
+            </button>
+          )}
         </div>
 
         {loading ? (

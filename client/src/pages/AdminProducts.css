@@ -1,3 +1,100 @@
+.filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--esencia-warm-white);
+  border-radius: var(--radius-lg);
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filter-group.search-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--esencia-taupe);
+  pointer-events: none;
+}
+
+.filter-input,
+.filter-select {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--esencia-espresso);
+  background: var(--esencia-cream);
+  border: 1px solid var(--esencia-blush);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  transition: all 0.3s ease;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: var(--esencia-caramel);
+  box-shadow: 0 0 0 3px rgba(196, 149, 106, 0.15);
+}
+
+.filter-input::placeholder {
+  color: var(--esencia-taupe);
+  opacity: 0.6;
+}
+
+.search-group .filter-input {
+  padding-left: 40px;
+  width: 100%;
+}
+
+.filter-select {
+  min-width: 160px;
+  cursor: pointer;
+}
+
+.price-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-input {
+  width: 100px;
+}
+
+.price-separator {
+  color: var(--esencia-taupe);
+  font-weight: 500;
+}
+
+.btn-clear-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--esencia-blush);
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--esencia-taupe);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-clear-filters:hover {
+  background: rgba(212, 165, 165, 0.3);
+  color: var(--esencia-rose);
+}
+
 .products-table-container {
   background: var(--esencia-warm-white);
   border-radius: var(--radius-lg);
@@ -228,6 +325,26 @@
 }
 
 @media (max-width: 768px) {
+  .filters-bar {
+    flex-direction: column;
+  }
+  
+  .filter-group.search-group {
+    width: 100%;
+  }
+  
+  .filter-select {
+    width: 100%;
+  }
+  
+  .price-filter {
+    width: 100%;
+  }
+  
+  .price-input {
+    flex: 1;
+  }
+  
   .products-table-container {
     overflow-x: auto;
   }

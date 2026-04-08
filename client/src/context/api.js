@@ -26,7 +26,16 @@ export const api = {
   },
   
   products: {
-    getAll: () => fetchAPI('/products'),
+    getAll: (filters = {}) => {
+      const params = new URLSearchParams();
+      if (filters.search) params.append('search', filters.search);
+      if (filters.category) params.append('category', filters.category);
+      if (filters.minPrice !== undefined) params.append('minPrice', filters.minPrice);
+      if (filters.maxPrice !== undefined) params.append('maxPrice', filters.maxPrice);
+      if (filters.status !== undefined) params.append('status', filters.status);
+      const query = params.toString();
+      return fetchAPI(`/products${query ? `?${query}` : ''}`);
+    },
     getById: (id) => fetchAPI(`/products/${id}`),
     getByCategory: (category) => fetchAPI(`/products/category/${category}`),
     create: (data) => fetchAPI('/products', { method: 'POST', body: JSON.stringify(data) }),

@@ -1,8 +1,35 @@
 const { Product, Category } = require('../models');
+const { Op } = require('sequelize');
 
 const getAllProducts = async (req, res) => {
   try {
+    const { search, category, minPrice, maxPrice, status } = req.query;
+    const where = {};
+
+    if (search) {
+      where.name = { [Op.like]: `%${search}%` };
+    }
+
+    if (category) {
+      where.category_id = category;
+    }
+
+    if (minPrice !== undefined || maxPrice !== undefined) {
+      where.price = {};
+      if (minPrice !== undefined) {
+        where.price[Op.gte] = parseFloat(minPrice);
+      }
+      if (maxPrice !== undefined) {
+        where.price[Op.lte] = parseFloat(maxPrice);
+      }
+    }
+
+    if (status !== undefined) {
+      where.is_available = status === 'true';
+    }
+
     const products = await Product.findAll({
+      where,
       include: [{ model: Category, as: 'category' }],
       order: [['order', 'ASC']]
     });
