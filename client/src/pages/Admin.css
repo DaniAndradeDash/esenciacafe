@@ -1,0 +1,153 @@
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: 240px;
+  background: var(--esencia-espresso);
+  color: var(--esencia-cream);
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  z-index: 100;
+}
+
+.admin-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  margin-bottom: 32px;
+}
+
+.admin-logo svg {
+  opacity: 0.9;
+}
+
+.admin-logo span {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+.admin-nav {
+  flex: 1;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--esencia-blush);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.admin-nav-item:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.admin-nav-item.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--esencia-caramel);
+  color: var(--esencia-cream);
+}
+
+.admin-nav-item svg {
+  flex-shrink: 0;
+}
+
+.admin-back-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--esencia-taupe);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.admin-back-link:hover {
+  opacity: 1;
+  color: var(--esencia-cream);
+}
+
+.admin-content {
+  flex: 1;
+  margin-left: 240px;
+  padding: 32px;
+  background: var(--esencia-cream);
+  min-height: 100vh;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.admin-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--esencia-espresso);
+}
+
+.admin-actions {
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 1024px) {
+  .admin-sidebar {
+    width: 200px;
+  }
+  
+  .admin-content {
+    margin-left: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    padding: 16px;
+  }
+  
+  .admin-logo {
+    margin-bottom: 0;
+  }
+  
+  .admin-nav {
+    flex-direction: row;
+    display: flex;
+    gap: 8px;
+  }
+  
+  .admin-nav-item span {
+    display: none;
+  }
+  
+  .admin-back-link {
+    display: none;
+  }
+  
+  .admin-content {
+    margin-left: 0;
+    padding: 24px 16px;
+  }
+}

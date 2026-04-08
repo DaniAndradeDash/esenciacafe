@@ -1,0 +1,40 @@
+.milk-note {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--esencia-blush);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  animation: fadeIn 0.5s ease-out 0.3s backwards;
+}
+
+.milk-note-icon {
+  color: var(--esencia-sage);
+  flex-shrink: 0;
+}
+
+.milk-note-text {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--esencia-espresso);
+}
+
+.milk-note-text strong {
+  font-weight: 600;
+  color: var(--esencia-taupe);
+}
+
+@media (max-width: 768px) {
+  .milk-note {
+    padding: 10px 16px;
+  }
+  
+  .milk-note-text {
+    font-size: 13px;
+  }
+}

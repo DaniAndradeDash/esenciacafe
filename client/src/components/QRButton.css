@@ -1,0 +1,135 @@
+.qr-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: var(--esencia-espresso);
+  color: var(--esencia-cream);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+  animation: fadeInUp 0.5s ease-out 0.6s backwards;
+}
+
+.qr-fab:hover {
+  transform: scale(1.1);
+  background: var(--esencia-taupe);
+}
+
+.qr-fab:active {
+  transform: scale(0.95);
+}
+
+.qr-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(61, 43, 31, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.qr-modal {
+  background: var(--esencia-warm-white);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  animation: scaleIn 0.3s ease-out;
+}
+
+.qr-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.qr-modal-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--esencia-espresso);
+}
+
+.qr-modal-close {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--esencia-taupe);
+  border-radius: var(--radius-full);
+  transition: all 0.3s ease;
+}
+
+.qr-modal-close:hover {
+  background: var(--esencia-blush);
+  color: var(--esencia-espresso);
+}
+
+.qr-image-container {
+  background: var(--esencia-cream);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.qr-image {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+}
+
+.qr-url {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--esencia-taupe);
+  word-break: break-all;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--esencia-cream);
+  border-radius: var(--radius-md);
+}
+
+.qr-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.qr-action-btn {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .qr-fab {
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .qr-modal {
+    padding: 24px;
+    margin: 16px;
+  }
+  
+  .qr-image {
+    width: 200px;
+    height: 200px;
+  }
+}

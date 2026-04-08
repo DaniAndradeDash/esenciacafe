@@ -1,0 +1,242 @@
+.products-table-container {
+  background: var(--esencia-warm-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.products-table th,
+.products-table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--esencia-blush);
+}
+
+.products-table th {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--esencia-taupe);
+  background: rgba(250, 247, 242, 0.5);
+}
+
+.products-table tbody tr {
+  transition: background 0.3s ease;
+}
+
+.products-table tbody tr:hover {
+  background: rgba(250, 247, 242, 0.5);
+}
+
+.products-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.product-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-cell-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--esencia-espresso);
+}
+
+.product-cell-desc {
+  font-size: 13px;
+  color: var(--esencia-taupe);
+  opacity: 0.7;
+}
+
+.price-cell {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  color: var(--esencia-caramel);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+}
+
+.status-badge.available {
+  background: rgba(156, 175, 136, 0.2);
+  color: var(--esencia-sage);
+}
+
+.status-badge.unavailable {
+  background: rgba(196, 149, 106, 0.2);
+  color: var(--esencia-caramel);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+}
+
+.action-btn.edit {
+  color: var(--esencia-taupe);
+}
+
+.action-btn.edit:hover {
+  background: rgba(139, 115, 85, 0.1);
+  color: var(--esencia-espresso);
+}
+
+.action-btn.delete {
+  color: var(--esencia-rose);
+}
+
+.action-btn.delete:hover {
+  background: rgba(212, 165, 165, 0.2);
+  color: #c44;
+}
+
+.empty-table {
+  text-align: center;
+  padding: 64px 24px;
+  color: var(--esencia-taupe);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(61, 43, 31, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal {
+  background: var(--esencia-warm-white);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 500px;
+  animation: scaleIn 0.3s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--esencia-blush);
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--esencia-espresso);
+}
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--esencia-taupe);
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: var(--esencia-blush);
+  color: var(--esencia-espresso);
+}
+
+.modal-form {
+  padding: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--esencia-espresso);
+  margin-bottom: 8px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.checkbox-group {
+  margin-top: 24px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--esencia-caramel);
+}
+
+.checkbox-label span {
+  font-size: 14px;
+  color: var(--esencia-espresso);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--esencia-blush);
+}
+
+@media (max-width: 768px) {
+  .products-table-container {
+    overflow-x: auto;
+  }
+  
+  .products-table {
+    min-width: 600px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
