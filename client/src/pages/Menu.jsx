@@ -5,7 +5,6 @@ import MilkNote from '../components/MilkNote';
 import CategoryNav from '../components/CategoryNav';
 import CategorySection from '../components/CategorySection';
 import Footer from '../components/Footer';
-import QRButton from '../components/QRButton';
 import api from '../context/api';
 import './Menu.css';
 
@@ -97,7 +96,6 @@ function Menu() {
         ))}
       </main>
       <Footer />
-      <QRButton />
     </div>
   );
 }

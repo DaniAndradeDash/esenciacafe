@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './Footer.css';
 
 function Footer() {
@@ -15,9 +14,6 @@ function Footer() {
         <p className="footer-tagline">Donde cada sorbo cuenta una historia</p>
         <div className="footer-divider"></div>
         <p className="footer-info">Visítanos y vive la experiencia</p>
-        <Link to="/admin" className="footer-admin-link">
-          Panel de Administración
-        </Link>
       </div>
     </footer>
   );
