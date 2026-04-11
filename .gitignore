@@ -9,7 +9,8 @@ client/build/
 .env
 .env.local
 .env.*.local
-server/.env
+!client/.env.local
+!server/.env
 server/.env.local
 
 # Logs

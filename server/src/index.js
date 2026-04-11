@@ -12,6 +12,10 @@ const qrRoutes = require('./routes/qr');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+app.use('/api', apiRoutes); // tus rutas
+app.use(express.static(path.join(__dirname, 'public'))); // o donde copies el dist
+app.get('*', (req,res)=>res.sendFile(path.join(__dirname,'public','index.html')));
+
 app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:5173',
   credentials: true
