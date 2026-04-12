@@ -49,9 +49,32 @@
   content: '$';
 }
 
-@media (max-width: 768px) {
+/* Mobile */
+@media (max-width: 575px) {
   .product-card {
-    padding: 20px;
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .product-name {
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+  
+  .product-description {
+    font-size: 12px;
+  }
+  
+  .product-price {
+    font-size: 15px;
+  }
+}
+
+/* Large phones */
+@media (min-width: 576px) and (max-width: 767px) {
+  .product-card {
+    padding: 18px;
+    gap: 14px;
   }
   
   .product-name {
@@ -60,5 +83,71 @@
   
   .product-price {
     font-size: 16px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .product-card {
+    padding: 20px;
+  }
+  
+  .product-name {
+    font-size: 19px;
+  }
+}
+
+/* Desktop 1080p */
+@media (min-width: 992px) and (max-width: 1439px) {
+  .product-card {
+    padding: 24px;
+  }
+  
+  .product-name {
+    font-size: 22px;
+  }
+  
+  .product-price {
+    font-size: 20px;
+  }
+}
+
+/* Large Desktop 1440p+ */
+@media (min-width: 1440px) {
+  .product-card {
+    padding: 28px;
+    gap: 20px;
+  }
+  
+  .product-name {
+    font-size: 24px;
+  }
+  
+  .product-description {
+    font-size: 15px;
+  }
+  
+  .product-price {
+    font-size: 22px;
+  }
+}
+
+/* 4K */
+@media (min-width: 1920px) {
+  .product-card {
+    padding: 32px;
+    gap: 24px;
+  }
+  
+  .product-name {
+    font-size: 28px;
+  }
+  
+  .product-description {
+    font-size: 16px;
+  }
+  
+  .product-price {
+    font-size: 26px;
   }
 }

@@ -21,6 +21,9 @@
   --radius-md: 8px;
   --radius-lg: 16px;
   --radius-full: 9999px;
+  
+  --container-max: 1400px;
+  --container-padding: 24px;
 }
 
 *, *::before, *::after {
@@ -31,11 +34,12 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.6;
   color: var(--esencia-espresso);
   background-color: var(--esencia-cream);
@@ -49,8 +53,8 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -86,7 +90,7 @@ button {
 
 input, textarea, select {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 img {
@@ -96,9 +100,9 @@ img {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--container-padding);
 }
 
 .btn {
@@ -108,7 +112,7 @@ img {
   gap: 8px;
   padding: 12px 24px;
   font-family: var(--font-ui);
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   border-radius: var(--radius-full);
   transition: all 0.3s ease;
@@ -148,7 +152,7 @@ img {
 .input {
   width: 100%;
   padding: 12px 16px;
-  font-size: 16px;
+  font-size: 1rem;
   border: 1px solid var(--esencia-blush);
   border-radius: var(--radius-md);
   background: var(--esencia-warm-white);
@@ -223,12 +227,105 @@ img {
   animation: scaleIn 0.3s ease-out forwards;
 }
 
-@media (max-width: 768px) {
-  body {
-    font-size: 16px;
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   
+   Mobile: < 576px
+   Tablet: 576px - 992px
+   Desktop: 992px - 1440px
+   Large Desktop: > 1440px (1080p, 4K)
+   ============================================ */
+
+/* Mobile (small phones) */
+@media (max-width: 575px) {
+  :root {
+    --container-padding: 16px;
   }
   
-  .container {
-    padding: 0 16px;
+  html {
+    font-size: 14px;
+  }
+  
+  body {
+    font-size: 1rem;
+  }
+  
+  .btn {
+    padding: 10px 18px;
+    font-size: 0.8125rem;
+  }
+}
+
+/* Mobile landscape / Large phones */
+@media (min-width: 576px) and (max-width: 767px) {
+  :root {
+    --container-padding: 20px;
+  }
+  
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  :root {
+    --container-padding: 24px;
+  }
+  
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Small desktop / Laptop */
+@media (min-width: 992px) and (max-width: 1199px) {
+  :root {
+    --container-padding: 32px;
+  }
+  
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Standard desktop 1080p */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  :root {
+    --container-max: 1200px;
+    --container-padding: 40px;
+  }
+  
+  html {
+    font-size: 17px;
+  }
+}
+
+/* Large desktop / 1440p */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  :root {
+    --container-max: 1400px;
+    --container-padding: 48px;
+  }
+  
+  html {
+    font-size: 18px;
+  }
+}
+
+/* Extra large / 4K */
+@media (min-width: 1920px) {
+  :root {
+    --container-max: 1800px;
+    --container-padding: 64px;
+  }
+  
+  html {
+    font-size: 20px;
   }
 }

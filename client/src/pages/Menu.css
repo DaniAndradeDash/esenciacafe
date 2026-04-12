@@ -25,13 +25,8 @@
 
 .loading-text {
   font-family: var(--font-ui);
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--esencia-taupe);
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .error-screen {
@@ -52,9 +47,46 @@
 
 .error-message {
   color: var(--esencia-taupe);
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .error-retry {
   margin-top: 8px;
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .menu-content {
+    padding-bottom: 32px;
+  }
+  
+  .loading-screen {
+    min-height: 50vh;
+  }
+  
+  .error-screen {
+    min-height: 50vh;
+    padding: 16px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 576px) and (max-width: 991px) {
+  .menu-content {
+    padding-bottom: 40px;
+  }
+}
+
+/* Desktop 1080p+ */
+@media (min-width: 1200px) {
+  .menu-content {
+    padding-bottom: 64px;
+  }
+}
+
+/* 4K */
+@media (min-width: 1920px) {
+  .menu-content {
+    padding-bottom: 80px;
+  }
 }

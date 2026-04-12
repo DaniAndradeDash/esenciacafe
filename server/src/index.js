@@ -12,12 +12,8 @@ const qrRoutes = require('./routes/qr');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use('/api', apiRoutes); // tus rutas
-app.use(express.static(path.join(__dirname, 'public'))); // o donde copies el dist
-app.get('*', (req,res)=>res.sendFile(path.join(__dirname,'public','index.html')));
-
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: process.env.CLIENT_URL || '*',
   credentials: true
 }));
 
@@ -61,8 +57,7 @@ app.get('/api', (req, res) => {
         delete: 'DELETE /api/recipes/:id'
       },
       qr: {
-        generate: 'GET /api/qr?url=<url>',
-        download: 'GET /api/qr/download?url=<url>'
+        generate: 'GET /api/qr?url=<url>'
       }
     }
   });
@@ -77,8 +72,8 @@ const startServer = async () => {
   try {
     await initDatabase();
     
-    app.listen(PORT, () => {
-      console.log(`\n☕ Servidor de Esencia Café corriendo en http://localhost:${PORT}`);
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`\n☕ Servidor de Esencia Café corriendo en puerto ${PORT}`);
       console.log(`📋 API disponible en http://localhost:${PORT}/api`);
     });
   } catch (error) {

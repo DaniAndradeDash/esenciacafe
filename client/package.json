@@ -1,7 +1,8 @@
 {
   "name": "esencia-cafe-client",
-  "private": true,
   "version": "1.0.0",
+  "description": "Frontend para Esencia Café - Menú digital",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -15,8 +16,6 @@
     "react-router-dom": "^6.22.2"
   },
   "devDependencies": {
-    "@types/react": "^18.2.56",
-    "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react": "^4.2.1",
     "vite": "^5.1.4"
   }
