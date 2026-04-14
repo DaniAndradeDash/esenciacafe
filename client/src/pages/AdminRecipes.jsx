@@ -250,7 +250,7 @@ function AdminRecipes() {
 
         {showModal && (
           <div className="modal-overlay" onClick={handleCloseModal}>
-            <div className="modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 600 }}>
+            <div className="modal" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
                 <h2 className="modal-title">
                   {editingRecipe ? 'Editar Receta' : 'Nueva Receta'}
